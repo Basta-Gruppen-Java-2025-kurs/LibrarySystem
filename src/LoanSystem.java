@@ -1,7 +1,9 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class LoanSystem {
+public final class LoanSystem {
+
+    private LoanSystem() {}
 
     public static boolean borrowBook(ArrayList<Boolean> available,
                                      ArrayList<String> borrowers,
