@@ -53,7 +53,7 @@ public class MovieLibrary
     {
         for (Movie movie : aLibrary)
         {
-            System.out.println("Name: " + movie.title + ", genre: " +movie.genre + ", year: " + movie.year + ", grade: " + movie.grade);
+            System.out.println("Name: " + movie.title + ", genre: " + movie.genre + ", year: " + movie.year + ", grade: " + movie.grade);
         }
     }
 
