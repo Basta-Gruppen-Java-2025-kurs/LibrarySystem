@@ -26,7 +26,7 @@ public class Main {
             s.nextLine(); // Rensa newline
             switch (choice) {
                 case 1:
-                    //displayAllBooks(bookTitles, bookAuthors, bookISBN);
+                    BookHandler.displayAllBooks(bookTitles, bookAuthors, bookISBN);
                     break;
                 case 2:
                     System.out.print("Titel: ");
