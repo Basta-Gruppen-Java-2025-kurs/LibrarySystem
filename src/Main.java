@@ -6,12 +6,51 @@ import java.util.Scanner;
 public class Main {
 
     public static void displayMainMenu(Scanner s) {
+        boolean runMenu = true;
+        int choice;
+
+        while (runMenu) {
+            System.out.println("\n=== BIBLIOTEKSSYSTEM ===");
+            System.out.println("1. Visa alla böcker");
+            System.out.println("2. Lägg till bok");
+            System.out.println("3. Låna bok");
+            System.out.println("4. Återlämna bok");
+            System.out.println("5. Visa statistik");
+            System.out.println("0. Avsluta");
+            try {
+                choice = s.nextInt();
+            } catch (Exception e) {
+                System.out.println("Wrong input (" + e + ")");
+                choice = -1;
+            }
+            s.nextLine(); // Rensa newline
+            switch (choice) {
+                case 1:
+                    //displayAllBooks(bookTitles, bookAuthors, bookISBN);
+                    break;
+                case 2:
+                    System.out.print("Titel: ");
+                    String title = s.nextLine();
+                    System.out.print("Författare: ");
+                    String author = s.nextLine();
+                    System.out.print("ISBN: ");
+                    String isbn = s.nextLine();
+                    // addBook(bookTitles, bookAuthors, bookISBN, title, author, isbn);
+                    break;
+                case 0:
+                    runMenu = false;
+                    break;
+                default:
+                    System.out.println("No action for this number");
+            }
+        }
+        System.out.println("Good bye.");
     }
 
-    public static void displayBookMenu() {
+    public static void displayBookMenu(Scanner s) {
     }
 
-    public static void displayLoanMenu() {
+    public static void displayLoanMenu(Scanner s) {
     }
 
     // + ansvarar för main-metoden och att koppla ihop alla delar
@@ -63,33 +102,7 @@ public class Main {
 
         BookHandler.addBook(bookTitles, bookAuthors, bookISBN, "Harry Potter", "J.K. Rowling", "1", bookAvailable);
 
-        boolean runMenu = false;
-        while (runMenu) {
-            System.out.println("\n=== BIBLIOTEKSSYSTEM ===");
-            System.out.println("1. Visa alla böcker");
-            System.out.println("2. Lägg till bok");
-            System.out.println("3. Låna bok");
-            System.out.println("4. Återlämna bok");
-            System.out.println("5. Visa statistik");
-            System.out.println("0. Avsluta");
-            int choice = scanner.nextInt();
-            scanner.nextLine(); // Rensa newline
-            switch (choice) {
-                case 1:
-                    //displayAllBooks(bookTitles, bookAuthors, bookISBN);
-                    break;
-                case 2:
-                    System.out.print("Titel: ");
-                    String title = scanner.nextLine();
-                    System.out.print("Författare: ");
-                    String author = scanner.nextLine();
-                    System.out.print("ISBN: ");
-                    String isbn = scanner.nextLine();
-                    // addBook(bookTitles, bookAuthors, bookISBN, title, author, isbn);
-                    break;
-// Fortsätt för andra val...
-            }
-        }
+        displayMainMenu(scanner);
     }
 
     public static void addBook(ArrayList<String> titles,
