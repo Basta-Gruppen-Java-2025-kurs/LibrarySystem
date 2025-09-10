@@ -5,7 +5,7 @@ import java.util.Scanner;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
 
-    public static void displayMainMenu() {
+    public static void displayMainMenu(Scanner s) {
     }
 
     public static void displayBookMenu() {
@@ -31,7 +31,7 @@ public class Main {
     static ArrayList<String> userNames = new ArrayList<>();
     static ArrayList<String> phoneNumbers = new ArrayList<>();
 
-    void testBooks() {
+    static void testBooks() {
 // Lägg till dessa i början av main för att spara tid på inmatning
 // Fördefinierade böcker
         bookTitles.add("Harry Potter");
@@ -58,8 +58,12 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-// Initiera listor och testdata här...
-        while (true) {
+
+        testBooks();
+
+        BookHandler.addBook(bookTitles, bookAuthors, bookISBN, "Harry Potter", "J.K. Rowling", "1", bookAvailable);
+
+        while (false) {
             System.out.println("\n=== BIBLIOTEKSSYSTEM ===");
             System.out.println("1. Visa alla böcker");
             System.out.println("2. Lägg till bok");
