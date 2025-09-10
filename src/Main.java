@@ -26,16 +26,35 @@ public class Main {
             s.nextLine(); // Rensa newline
             switch (choice) {
                 case 1:
-                    //displayAllBooks(bookTitles, bookAuthors, bookISBN);
+                    //BookHandler.displayAllBooks(bookTitles, bookAuthors, bookISBN);
                     break;
                 case 2:
-                    System.out.print("Titel: ");
+                    System.out.print("Title: ");
                     String title = s.nextLine();
-                    System.out.print("Författare: ");
+                    System.out.print("Author: ");
                     String author = s.nextLine();
                     System.out.print("ISBN: ");
                     String isbn = s.nextLine();
-                    // addBook(bookTitles, bookAuthors, bookISBN, title, author, isbn);
+                    BookHandler.addBook(bookTitles, bookAuthors, bookISBN, title, author, isbn, bookAvailable);
+                    break;
+                case 3:
+                    // Loan a book
+                    System.out.println("Vad heter du?");
+                    String borrowerName = s.nextLine();
+                    System.out.print("Search book to loan: ");
+                    String searchTerm = s.nextLine();
+                    //int index = searchBook(bookTitles, bookAuthors, searchTerm);
+                    /*if (borrowBook(bookTitles, borrowerNames, borrowedBooks, index, borrowerName)) {
+                        System.out.println("Book loaned successfully");
+                    } else {
+                        System.out.println("Failed to load book.");
+                    }*/
+                    break;
+                case 4:
+
+                    break;
+                case 5:
+                    //displayLibraryStatistic();
                     break;
                 case 0:
                     runMenu = false;
@@ -103,16 +122,5 @@ public class Main {
         BookHandler.addBook(bookTitles, bookAuthors, bookISBN, "Harry Potter", "J.K. Rowling", "1", bookAvailable);
 
         displayMainMenu(scanner);
-    }
-
-    public static void addBook(ArrayList<String> titles,
-                               ArrayList<String> authors, ArrayList<String> isbn, String
-                                       title, String author, String isbnNumber) {
-        titles.add(title);
-        authors.add(author);
-        isbn.add(isbnNumber);
-        bookAvailable.add(true); // Ny bok är alltid tillgänglig
-        System.out.println("Bok tillagd: " + title + " av " +
-                author);
     }
 }
