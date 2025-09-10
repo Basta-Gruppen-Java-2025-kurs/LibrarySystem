@@ -63,7 +63,8 @@ public class Main {
 
         BookHandler.addBook(bookTitles, bookAuthors, bookISBN, "Harry Potter", "J.K. Rowling", "1", bookAvailable);
 
-        while (false) {
+        boolean runMenu = false;
+        while (runMenu) {
             System.out.println("\n=== BIBLIOTEKSSYSTEM ===");
             System.out.println("1. Visa alla böcker");
             System.out.println("2. Lägg till bok");
