@@ -1,13 +1,12 @@
-import java.util.ArrayList;
 import java.util.List;
 
 public final class LoanSystem {
 
     private LoanSystem() {}
 
-    public static boolean borrowBook(ArrayList<Boolean> available,
-                                     ArrayList<String> borrowers,
-                                     ArrayList<String> borrowedBooks,
+    public static boolean borrowBook(List<Boolean> available,
+                                     List<String> borrowers,
+                                     List<String> borrowedBooks,
                                      int bookIndex,
                                      String borrowerName) {
         boolean isAvailable = available.get(bookIndex);
