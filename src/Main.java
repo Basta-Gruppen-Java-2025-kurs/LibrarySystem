@@ -123,4 +123,15 @@ public class Main {
 
         displayMainMenu(scanner);
     }
+
+    public static void addBook(ArrayList<String> titles,
+                               ArrayList<String> authors, ArrayList<String> isbn, String
+                                       title, String author, String isbnNumber) {
+        titles.add(title);
+        authors.add(author);
+        isbn.add(isbnNumber);
+        bookAvailable.add(true); // Ny bok är alltid tillgänglig
+        System.out.println("Bok tillagd: " + title + " av " +
+                author);
+    }
 }
