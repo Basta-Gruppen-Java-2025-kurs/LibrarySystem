@@ -17,19 +17,19 @@ public class Main {
     // + ansvarar för main-metoden och att koppla ihop alla delar
 // I main-metoden - ENDAST dessa listor för att spara tid
 // Böcker (index motsvarar varandra)
-    ArrayList<String> bookTitles = new ArrayList<>();
-    ArrayList<String> bookAuthors = new ArrayList<>();
-    ArrayList<String> bookISBN = new ArrayList<>();
-    ArrayList<Boolean> bookAvailable = new ArrayList<>(); // true =         tillgänglig
+    static ArrayList<String> bookTitles = new ArrayList<>();
+    static ArrayList<String> bookAuthors = new ArrayList<>();
+    static ArrayList<String> bookISBN = new ArrayList<>();
+    static ArrayList<Boolean> bookAvailable = new ArrayList<>(); // true =         tillgänglig
     // Lån (index motsvarar varandra)
-    ArrayList<String> borrowerNames = new ArrayList<>();
-    ArrayList<String> borrowedBooks = new ArrayList<>(); // ISBN för         lånad bok
+    static ArrayList<String> borrowerNames = new ArrayList<>();
+    static ArrayList<String> borrowedBooks = new ArrayList<>(); // ISBN för         lånad bok
 // Användare (index motsvarar varandra)
 
     // Förinställd testdata (Person 5 skapar detta)
     // Enkel huvudmeny (Person 5)
-    ArrayList<String> userNames = new ArrayList<>();
-    ArrayList<String> phoneNumbers = new ArrayList<>();
+    static ArrayList<String> userNames = new ArrayList<>();
+    static ArrayList<String> phoneNumbers = new ArrayList<>();
 
     void testBooks() {
 // Lägg till dessa i början av main för att spara tid på inmatning
@@ -64,11 +64,6 @@ public class Main {
             System.out.println("1. Visa alla böcker");
             System.out.println("2. Lägg till bok");
             System.out.println("3. Låna bok");
-                /*Exempel på färdig funktion (för referens)
-                Tips för att lyckas på kort tid:
-                Håll det enkelt - Inga komplicerade algoritmer
-                Använd testdata - Slipp skriva in böcker manuellt
-                Testa löpande - Kör koden ofta för att hitta fel tidigt*/
             System.out.println("4. Återlämna bok");
             System.out.println("5. Visa statistik");
             System.out.println("0. Avsluta");
@@ -90,5 +85,16 @@ public class Main {
 // Fortsätt för andra val...
             }
         }
+    }
+
+    public static void addBook(ArrayList<String> titles,
+                               ArrayList<String> authors, ArrayList<String> isbn, String
+                                       title, String author, String isbnNumber) {
+        titles.add(title);
+        authors.add(author);
+        isbn.add(isbnNumber);
+        bookAvailable.add(true); // Ny bok är alltid tillgänglig
+        System.out.println("Bok tillagd: " + title + " av " +
+                author);
     }
 }
