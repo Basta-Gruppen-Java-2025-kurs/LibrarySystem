@@ -12,6 +12,18 @@ public class BookHandler {
         bookAuthors.add(author);
         bookIsbn.add(isbnNumber);
         available.add(true);
-        System.out.println("Added book: " + title + " author: " + author);
+        System.out.println("Bok tillagd: " + title + " av: " + author);
+    }
+
+    public static void displayAllBooks(ArrayList<String> titles,
+                                       ArrayList<String> authors,
+                                       ArrayList<String> isbn) {
+
+        System.out.println("Alla böcker i biblioteket");
+        for (int i = 0; i < titles.size(); i++) {
+            System.out.println((i + 1) + ". " + titles.get(i) +
+                    " av " + authors.get(i) +
+                    " (ISBN: " + isbn.get(i) + ")");
+        }
     }
 }
