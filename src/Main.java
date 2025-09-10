@@ -35,7 +35,7 @@ public class Main {
                     String author = s.nextLine();
                     System.out.print("ISBN: ");
                     String isbn = s.nextLine();
-                    // addBook(bookTitles, bookAuthors, bookISBN, title, author, isbn);
+                    BookHandler.addBook(bookTitles, bookAuthors, bookISBN, title, author, isbn, bookAvailable);
                     break;
                 case 0:
                     runMenu = false;
@@ -103,16 +103,5 @@ public class Main {
         BookHandler.addBook(bookTitles, bookAuthors, bookISBN, "Harry Potter", "J.K. Rowling", "1", bookAvailable);
 
         displayMainMenu(scanner);
-    }
-
-    public static void addBook(ArrayList<String> titles,
-                               ArrayList<String> authors, ArrayList<String> isbn, String
-                                       title, String author, String isbnNumber) {
-        titles.add(title);
-        authors.add(author);
-        isbn.add(isbnNumber);
-        bookAvailable.add(true); // Ny bok är alltid tillgänglig
-        System.out.println("Bok tillagd: " + title + " av " +
-                author);
     }
 }
