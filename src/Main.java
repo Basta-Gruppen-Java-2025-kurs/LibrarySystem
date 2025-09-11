@@ -15,7 +15,8 @@ public class Main {
             System.out.println("4. Återlämna bok");
             System.out.println("5. Visa statistik");
             System.out.println("6. Visa alla kunder");
-            System.out.println("7. Visa filmer meny");
+            System.out.println("7. Visa alla lånat böker");
+            System.out.println("8. Visa filmer meny");
             System.out.println("0. Avsluta");
             try {
                 choice = s.nextInt();
@@ -31,7 +32,8 @@ public class Main {
                 case 4 -> displayReturnMenu(s);
                 case 5 -> EnklaRapporter.displayLibraryStatistics(bookTitles, bookAvailable, userNames);
                 case 6 -> UserHandler.displayAllUsers(userNames, phoneNumbers);
-                case 7 -> MovieLibrary.main(new String[0]);
+                case 7 -> LoanSystem.displayBorrowedBooks(borrowerNames, borrowedBooks);
+                case 8 -> MovieLibrary.main(new String[0]);
                 case 0 -> runMenu = false;
                 default -> System.out.println("Ingen åtgärd för detta nummer");
             }
