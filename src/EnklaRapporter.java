@@ -11,6 +11,9 @@ public class EnklaRapporter {
     }
 
     public static void displayLibraryStatistics(ArrayList<String>titles, ArrayList<Boolean> available, ArrayList<String> userNames) {
-        System.out.println("Inte implementerat ännu");
+        System.out.println("Totalt antal böcker i biblioteket: " + titles.size());
+        System.out.println("Antal tillgängliga böcker på biblioteket: " + countAvailableBooks(available));
+        System.out.println("Antal lånade böcker på biblioteket: " + countBorrowedBooks(available));
+        System.out.println("Antal kunder på biblioteket: " + userNames.size());
     }
 }

@@ -44,7 +44,7 @@ public class Main {
                     displayBookMenu(s);
                     break;
                 case 5:
-                    // visa statistic
+                    EnklaRapporter.displayLibraryStatistics(bookTitles, bookAvailable, userNames);
                     break;
                 case 0:
                     runMenu = false;
@@ -62,7 +62,7 @@ public class Main {
 
     public static void displayLoanMenu(Scanner s) {
         // Loan a book
-        System.out.println("Vad heter du?");
+        System.out.println("Vad heter kunden?");
         String borrowerName = s.nextLine();
 
         //String userPhoneNummer =
