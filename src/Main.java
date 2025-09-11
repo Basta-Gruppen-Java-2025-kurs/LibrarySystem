@@ -26,7 +26,7 @@ public class Main {
             s.nextLine(); // Rensa newline
             switch (choice) {
                 case 1:
-                    //BookHandler.displayAllBooks(bookTitles, bookAuthors, bookISBN);
+                    BookHandler.displayAllBooks(bookTitles, bookAuthors, bookISBN);
                     break;
                 case 2:
                     System.out.print("Title: ");
@@ -38,23 +38,13 @@ public class Main {
                     BookHandler.addBook(bookTitles, bookAuthors, bookISBN, title, author, isbn, bookAvailable);
                     break;
                 case 3:
-                    // Loan a book
-                    System.out.println("Vad heter du?");
-                    String borrowerName = s.nextLine();
-                    System.out.print("Search book to loan: ");
-                    String searchTerm = s.nextLine();
-                    //int index = searchBook(bookTitles, bookAuthors, searchTerm);
-                    /*if (borrowBook(bookTitles, borrowerNames, borrowedBooks, index, borrowerName)) {
-                        System.out.println("Book loaned successfully");
-                    } else {
-                        System.out.println("Failed to load book.");
-                    }*/
+                    displayLoanMenu(s);
                     break;
                 case 4:
-
+                    displayBookMenu(s);
                     break;
                 case 5:
-                    //displayLibraryStatistic();
+                    // visa statistic
                     break;
                 case 0:
                     runMenu = false;
@@ -70,6 +60,17 @@ public class Main {
     }
 
     public static void displayLoanMenu(Scanner s) {
+        // Loan a book
+        System.out.println("Vad heter du?");
+        String borrowerName = s.nextLine();
+        System.out.print("Search book to loan: ");
+        String searchTerm = s.nextLine();
+        //int index = searchBook(bookTitles, bookAuthors, searchTerm);
+        /*if (borrowBook(bookTitles, borrowerNames, borrowedBooks, index, borrowerName)) {
+            System.out.println("Book loaned successfully");
+        } else {
+            System.out.println("Failed to load book.");
+        }*/
     }
 
     // + ansvarar för main-metoden och att koppla ihop alla delar
