@@ -27,7 +27,7 @@ public class BookHandler {
         }
     }
 
-    public static void searchBook(ArrayList<String> bookTitles,
+    public static int searchBook(ArrayList<String> bookTitles,
                                   ArrayList<String> bookAuthors,
                                   String searchTerm) {
         for (int i = 0; i < bookTitles.size(); i++) {
@@ -37,8 +37,10 @@ public class BookHandler {
 
             if (titleMatch || authorMatch) {
                 System.out.println("Hittade: " + bookTitles.get(i) + " av " + bookAuthors.get(i));
+                return i;
             }
         }
         System.out.println("Ingen bok hittades med sökordet: " + searchTerm);
+        return -1;
     }
 }
