@@ -2,11 +2,13 @@ import java.util.List;
 
 public final class LoanSystem {
 
-    private LoanSystem() {}
+    private LoanSystem() {
+    }
 
     public static boolean borrowBook(List<Boolean> available,
                                      List<String> borrowers,
                                      List<String> borrowedBooks,
+                                     List<String> bookISBN,
                                      int bookIndex,
                                      String borrowerName) {
         if (!isValidIndex(bookIndex, available, borrowers, borrowedBooks))
@@ -17,7 +19,10 @@ public final class LoanSystem {
 
         available.set(bookIndex, false);
         borrowers.add(borrowerName);
-        borrowedBooks.add(String.valueOf(bookIndex)); // ????????????????????????
+
+        String isbn = bookISBN.get(bookIndex);
+        borrowedBooks.add(isbn);
+
         return true;
     }
 
@@ -25,6 +30,9 @@ public final class LoanSystem {
                                      List<String> borrowers,
                                      List<String> borrowedBooks,
                                      String isbnNumber) {
+        if (borrowedBooks.isEmpty())
+            throw new RuntimeException("No borrowed books available");
+
         int bookIndex = borrowedBooks.indexOf(isbnNumber);
 
         if (!isValidIndex(bookIndex, available, borrowers, borrowedBooks))

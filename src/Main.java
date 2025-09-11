@@ -68,7 +68,7 @@ public class Main {
             System.out.println("Tyvärr finns boken inte");
             return;
         }
-        boolean isLoanSuccessful = LoanSystem.borrowBook(bookAvailable, borrowerNames, borrowedBooks, index, borrowerName);
+        boolean isLoanSuccessful = LoanSystem.borrowBook(bookAvailable, borrowerNames, borrowedBooks, bookISBN, index, borrowerName);
         if (isLoanSuccessful) {
             System.out.println("Book loaned successfully");
         } else {
@@ -89,6 +89,11 @@ public class Main {
     }
 
     private static void displayReturnMenu(Scanner s) {
+        if (borrowedBooks.isEmpty()) {
+            System.out.println("No borrowed books available");
+            return;
+        }
+
         System.out.println("Ange bokens ISBN:");
         String isbn = s.nextLine();
 

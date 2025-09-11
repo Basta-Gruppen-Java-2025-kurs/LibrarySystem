@@ -20,7 +20,7 @@ public class UserHandler
     {
         for (int i = 0; i < userNames.size(); i++)
         {
-            if (userNames.get(i) == name)
+            if (userNames.get(i).equalsIgnoreCase(name))
             {
                 return phoneNumbers.get(i);
             }

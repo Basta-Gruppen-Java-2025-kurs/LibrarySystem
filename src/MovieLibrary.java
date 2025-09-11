@@ -63,7 +63,7 @@ public class MovieLibrary
 
         for (Movie movie : library)
         {
-            if (movie.genre == aGenre)
+            if (movie.genre.equalsIgnoreCase(aGenre))
             {
                 moviesWithSelectedGenre.add(movie);
             }
