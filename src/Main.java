@@ -24,29 +24,14 @@ public class Main {
             }
             s.nextLine();
             switch (choice) {
-                case 1:
-                    BookHandler.displayAllBooks(bookTitles, bookAuthors, bookISBN);
-                    break;
-                case 2:
-                    displayBookMenu(s);
-                    break;
-                case 3:
-                    displayLoanMenu(s);
-                    break;
-                case 4:
-                    displayReturnMenu(s);
-                    break;
-                case 5:
-                    EnklaRapporter.displayLibraryStatistics(bookTitles, bookAvailable, userNames);
-                    break;
-                case 6:
-                    UserHandler.displayAllUsers(userNames, phoneNumbers);
-                    break;
-                case 0:
-                    runMenu = false;
-                    break;
-                default:
-                    System.out.println("Ingen åtgärd för detta nummer");
+                case 1 -> BookHandler.displayAllBooks(bookTitles, bookAuthors, bookISBN);
+                case 2 -> displayBookMenu(s);
+                case 3 -> displayLoanMenu(s);
+                case 4 -> displayReturnMenu(s);
+                case 5 -> EnklaRapporter.displayLibraryStatistics(bookTitles, bookAvailable, userNames);
+                case 6 -> UserHandler.displayAllUsers(userNames, phoneNumbers);
+                case 0 -> runMenu = false;
+                default -> System.out.println("Ingen åtgärd för detta nummer");
             }
         }
         System.out.println("Hej då.");
