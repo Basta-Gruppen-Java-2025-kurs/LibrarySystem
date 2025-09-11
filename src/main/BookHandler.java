@@ -1,6 +1,9 @@
+package main;
+
 import java.util.ArrayList;
 
-public class BookHandler {
+public final class BookHandler {
+
     public static void addBook(ArrayList<String> bookTitles,
                                ArrayList<String> bookAuthors,
                                ArrayList<String> bookIsbn,
