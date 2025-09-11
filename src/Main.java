@@ -26,7 +26,7 @@ public class Main {
             s.nextLine(); // Rensa newline
             switch (choice) {
                 case 1:
-                    //BookHandler.displayAllBooks(bookTitles, bookAuthors, bookISBN);
+                    BookHandler.displayAllBooks(bookTitles, bookAuthors, bookISBN);
                     break;
                 case 2:
                     System.out.print("Title: ");
@@ -44,7 +44,7 @@ public class Main {
                     displayBookMenu(s);
                     break;
                 case 5:
-                    BookHandler.displayAllBooks(bookTitles, bookAuthors, bookISBN);
+                    // visa statistic
                     break;
                 case 0:
                     runMenu = false;
