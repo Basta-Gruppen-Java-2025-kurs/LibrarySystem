@@ -1,12 +1,5 @@
-package main;
-
 import java.util.ArrayList;
 import java.util.Scanner;
-
-import static main.BookHandler.displayAllBooks;
-import static main.LoanSystem.*;
-import static main.LoanSystem.borrowBook;
-import static main.LoanSystem.displayBorrowedBooks;
 
 public class Main {
 
@@ -39,7 +32,7 @@ public class Main {
             }
             s.nextLine();
             switch (choice) {
-                case 1 -> displayAllBooks(bookTitles, bookAuthors, bookISBN);
+                case 1 -> BookHandler.displayAllBooks(bookTitles, bookAuthors, bookISBN);
                 case 2 -> {
                     System.out.print("Title: ");
                     String title = s.nextLine();
@@ -56,7 +49,7 @@ public class Main {
                     String searchTerm = s.nextLine();
                     int index = bookTitles.indexOf(searchTerm);
 
-                    boolean isLoanSuccessful = borrowBook(bookAvailable, borrowerNames, borrowedBooks, index, borrowerName);
+                    boolean isLoanSuccessful = LoanSystem.borrowBook(bookAvailable, borrowerNames, borrowedBooks, index, borrowerName);
                     if (isLoanSuccessful) {
                         System.out.println("Book loaned successfully");
                     } else {
@@ -67,14 +60,14 @@ public class Main {
                     System.out.println("Enter book ISBN:");
                     String isbn = s.nextLine();
 
-                    boolean isReturnSuccessful = returnBook(bookAvailable, borrowerNames, borrowedBooks, isbn);
+                    boolean isReturnSuccessful = LoanSystem.returnBook(bookAvailable, borrowerNames, borrowedBooks, isbn);
                     if (isReturnSuccessful) {
                         System.out.println("Book returned successfully");
                     } else {
                         System.out.println("Failed to return book.");
                     }
                 }
-                case 5 -> displayBorrowedBooks(borrowerNames, borrowedBooks);
+                case 5 -> LoanSystem.displayBorrowedBooks(borrowerNames, borrowedBooks);
                 case 0 -> runMenu = false;
                 default -> System.out.println("No action for this number");
             }

@@ -1,5 +1,3 @@
-package main;
-
 public class Movie
 {
     Movie(String aTitle, String aGenre, int aYear, double aGrade)
