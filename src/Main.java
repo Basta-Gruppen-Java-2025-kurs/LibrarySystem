@@ -57,15 +57,22 @@ public class Main {
     }
 
     public static void displayBookMenu(Scanner s) {
+        System.out.println();
     }
 
     public static void displayLoanMenu(Scanner s) {
         // Loan a book
         System.out.println("Vad heter du?");
         String borrowerName = s.nextLine();
+
+        //String userPhoneNummer =
+
         System.out.print("Search book to loan: ");
         String searchTerm = s.nextLine();
-        //int index = searchBook(bookTitles, bookAuthors, searchTerm);
+        int index = BookHandler.searchBook(bookTitles, bookAuthors, searchTerm);
+        if (index < 0) {
+            System.out.println("");
+        }
         /*if (borrowBook(bookTitles, borrowerNames, borrowedBooks, index, borrowerName)) {
             System.out.println("Book loaned successfully");
         } else {
