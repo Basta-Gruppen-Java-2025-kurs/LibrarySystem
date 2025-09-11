@@ -52,7 +52,7 @@ public class Main {
                 case 3 -> {
                     System.out.println("Vad heter du?");
                     String borrowerName = s.nextLine();
-                    System.out.print("Search book to loan: ");
+                    System.out.print("Enter book title: ");
                     String searchTerm = s.nextLine();
                     int index = bookTitles.indexOf(searchTerm);
 
