@@ -33,40 +33,9 @@ public class Main {
             s.nextLine();
             switch (choice) {
                 case 1 -> BookHandler.displayAllBooks(bookTitles, bookAuthors, bookISBN);
-                case 2 -> {
-                    System.out.print("Title: ");
-                    String title = s.nextLine();
-                    System.out.print("Author: ");
-                    String author = s.nextLine();
-                    System.out.print("ISBN: ");
-                    String isbn = s.nextLine();
-                    BookHandler.addBook(bookTitles, bookAuthors, bookISBN, title, author, isbn, bookAvailable);
-                }
-                case 3 -> {
-                    System.out.println("Vad heter du?");
-                    String borrowerName = s.nextLine();
-                    System.out.print("Enter book title: ");
-                    String searchTerm = s.nextLine();
-                    int index = bookTitles.indexOf(searchTerm);
-
-                    boolean isLoanSuccessful = LoanSystem.borrowBook(bookAvailable, borrowerNames, borrowedBooks, index, borrowerName);
-                    if (isLoanSuccessful) {
-                        System.out.println("Book loaned successfully");
-                    } else {
-                        System.out.println("Failed to load book.");
-                    }
-                }
-                case 4 -> {
-                    System.out.println("Enter book ISBN:");
-                    String isbn = s.nextLine();
-
-                    boolean isReturnSuccessful = LoanSystem.returnBook(bookAvailable, borrowerNames, borrowedBooks, isbn);
-                    if (isReturnSuccessful) {
-                        System.out.println("Book returned successfully");
-                    } else {
-                        System.out.println("Failed to return book.");
-                    }
-                }
+                case 2 -> addBookMenu(s);
+                case 3 -> displayLoanMenu(s);
+                case 4 -> displayReturnMenu(s);
                 case 5 -> LoanSystem.displayBorrowedBooks(borrowerNames, borrowedBooks);
                 case 0 -> runMenu = false;
                 default -> System.out.println("No action for this number");
@@ -75,12 +44,55 @@ public class Main {
         System.out.println("Good bye.");
     }
 
-    public static void displayBookMenu(Scanner s) {
-        // TODO:
+    private static void addBookMenu(Scanner s) {
+        System.out.print("Title: ");
+        String title = s.nextLine();
+        System.out.print("Author: ");
+        String author = s.nextLine();
+        System.out.print("ISBN: ");
+        String isbn = s.nextLine();
+
+        BookHandler.addBook(bookTitles, bookAuthors, bookISBN, title, author, isbn, bookAvailable);
     }
 
-    public static void displayLoanMenu(Scanner s) {
-        // TODO:
+    private static void displayReturnMenu(Scanner s) {
+        System.out.println("Enter book ISBN:");
+        String isbn = s.nextLine();
+
+        boolean isReturnSuccessful = LoanSystem.returnBook(bookAvailable, borrowerNames, borrowedBooks, isbn);
+        if (isReturnSuccessful) {
+            System.out.println("Book returned successfully");
+        } else {
+            System.out.println("Failed to return book.");
+        }
+    }
+
+    private static void displayLoanMenu(Scanner s) {
+        System.out.println("Vad heter du?");
+        String borrowerName = s.nextLine();
+        System.out.print("Enter book title: ");
+        String searchTerm = s.nextLine();
+
+        int index = bookTitles.indexOf(searchTerm);
+        boolean isLoanSuccessful = LoanSystem.borrowBook(bookAvailable, borrowerNames, borrowedBooks, index, borrowerName);
+        if (isLoanSuccessful) {
+            System.out.println("Book loaned successfully");
+        } else {
+            System.out.println("Failed to load book.");
+        }
+    }
+
+    public static void addBook(ArrayList<String> titles,
+                               ArrayList<String> authors,
+                               ArrayList<String> isbn,
+                               String title,
+                               String author,
+                               String isbnNumber) {
+        titles.add(title);
+        authors.add(author);
+        isbn.add(isbnNumber);
+        bookAvailable.add(true);
+        System.out.println("Bok tillagd: " + title + " av " + author);
     }
 
     private static void testBooks() {
@@ -105,22 +117,10 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
         testBooks();
-        BookHandler.addBook(bookTitles, bookAuthors, bookISBN, "Harry Potter", "J.K. Rowling", "1", bookAvailable);
-        displayMainMenu(scanner);
-    }
-
-    public static void addBook(ArrayList<String> titles,
-                               ArrayList<String> authors,
-                               ArrayList<String> isbn,
-                               String title,
-                               String author,
-                               String isbnNumber) {
-        titles.add(title);
-        authors.add(author);
-        isbn.add(isbnNumber);
-        bookAvailable.add(true);
-        System.out.println("Bok tillagd: " + title + " av " + author);
+        try (Scanner scanner = new Scanner(System.in)) {
+            BookHandler.addBook(bookTitles, bookAuthors, bookISBN, "Harry Potter", "J.K. Rowling", "1", bookAvailable);
+            displayMainMenu(scanner);
+        }
     }
 }
