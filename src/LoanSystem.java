@@ -2,8 +2,7 @@ import java.util.List;
 
 public final class LoanSystem {
 
-    private LoanSystem() {
-    }
+    private LoanSystem() {}
 
     public static boolean borrowBook(List<Boolean> available,
                                      List<String> borrowers,
@@ -11,8 +10,8 @@ public final class LoanSystem {
                                      List<String> bookISBN,
                                      int bookIndex,
                                      String borrowerName) {
-        if (!isValidIndex(bookIndex, available, borrowers, borrowedBooks))
-            throw new RuntimeException("Invalid book index");
+        if (bookIndex < 0)
+            throw new RuntimeException("Invalid index");
 
         boolean isAvailable = available.get(bookIndex);
         if (!isAvailable) return false;
@@ -35,8 +34,8 @@ public final class LoanSystem {
 
         int bookIndex = borrowedBooks.indexOf(isbnNumber);
 
-        if (!isValidIndex(bookIndex, available, borrowers, borrowedBooks))
-            throw new RuntimeException("Book not found");
+        if (bookIndex < 0)
+            throw new RuntimeException("Invalid index");
 
         available.set(bookIndex, true);
         borrowers.remove(bookIndex);
@@ -50,22 +49,8 @@ public final class LoanSystem {
             return;
         }
 
-        if (borrowedBooks.size() != borrowers.size())
-            throw new RuntimeException("Lists are out of sync");
-
         for (int i = 0; i < borrowers.size(); i++) {
             System.out.printf("%-10s %s%n", borrowers.get(i), borrowedBooks.get(i));
         }
-    }
-
-    private static boolean isValidIndex(int index, List<?>... lists) {
-        if (index < 0) return false;
-
-        for (List<?> list : lists) {
-            if (index >= list.size()) {
-                return false;
-            }
-        }
-        return true;
     }
 }
