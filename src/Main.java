@@ -34,7 +34,7 @@ public class Main {
                     displayLoanMenu(s);
                     break;
                 case 4:
-                    //displayReturnMenu(s);
+                    displayReturnMenu(s);
                     break;
                 case 5:
                     EnklaRapporter.displayLibraryStatistics(bookTitles, bookAvailable, userNames);
@@ -63,11 +63,13 @@ public class Main {
     }
 
     public static void displayLoanMenu(Scanner s) {
-        // Loan a book
         System.out.println("Vad heter kunden?");
         String borrowerName = s.nextLine();
 
         String userPhoneNummer = findOrAddUser(s, borrowerName);
+        if (userPhoneNummer.length() < 1) {
+            return;
+        }
 
         System.out.print("Söka en bok för att låna: ");
         String searchTerm = s.nextLine();
@@ -98,7 +100,7 @@ public class Main {
     }
 
     private static void displayReturnMenu(Scanner s) {
-        System.out.println("Enter book ISBN:");
+        System.out.println("Ange bokens ISBN:");
         String isbn = s.nextLine();
 
         boolean isReturnSuccessful = LoanSystem.returnBook(bookAvailable, borrowerNames, borrowedBooks, isbn);
@@ -108,6 +110,7 @@ public class Main {
             System.out.println("Failed to return book.");
         }
     }
+
     static ArrayList<String> bookTitles = new ArrayList<>();
     static ArrayList<String> bookAuthors = new ArrayList<>();
     static ArrayList<String> bookISBN = new ArrayList<>();
