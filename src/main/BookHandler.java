@@ -18,15 +18,30 @@ public final class BookHandler {
         System.out.println("Bok tillagd: " + title + " av: " + author);
     }
 
-    public static void displayAllBooks(ArrayList<String> titles,
-                                       ArrayList<String> authors,
-                                       ArrayList<String> isbn) {
+    public static void displayAllBooks(ArrayList<String> bookTitles,
+                                       ArrayList<String> bookAuthors,
+                                       ArrayList<String> bookIsbn) {
 
-        System.out.println("Alla böcker i biblioteket");
-        for (int i = 0; i < titles.size(); i++) {
-            System.out.println((i + 1) + ". " + titles.get(i) +
-                    " av " + authors.get(i) +
-                    " (ISBN: " + isbn.get(i) + ")");
+        System.out.println("\n=== Alla böcker i biblioteket ===");
+        for (int i = 0; i < bookTitles.size(); i++) {
+            System.out.println((i + 1) + ". " + bookTitles.get(i) +
+                    " av " + bookAuthors.get(i) +
+                    " (ISBN: " + bookIsbn.get(i) + ")");
         }
+    }
+
+    public static void searchBook(ArrayList<String> bookTitles,
+                                  ArrayList<String> bookAuthors,
+                                  String searchTerm) {
+        for (int i = 0; i < bookTitles.size(); i++) {
+
+            boolean titleMatch = bookTitles.get(i).toLowerCase().contains(searchTerm.toLowerCase());
+            boolean authorMatch = bookAuthors.get(i).toLowerCase().contains(searchTerm.toLowerCase());
+
+            if (titleMatch || authorMatch) {
+                System.out.println("Hittade: " + bookTitles.get(i) + " av " + bookAuthors.get(i));
+            }
+        }
+        System.out.println("Ingen bok hittades med sökordet: " + searchTerm);
     }
 }
