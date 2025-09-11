@@ -16,6 +16,7 @@ public class Main {
             System.out.println("3. Låna bok");
             System.out.println("4. Återlämna bok");
             System.out.println("5. Visa statistik");
+            System.out.println("6. Visa alla kunder");
             System.out.println("0. Avsluta");
             try {
                 choice = s.nextInt();
@@ -45,6 +46,9 @@ public class Main {
                     break;
                 case 5:
                     EnklaRapporter.displayLibraryStatistics(bookTitles, bookAvailable, userNames);
+                    break;
+                case 6:
+                    UserHandler.displayAllUsers(userNames, phoneNumbers);
                     break;
                 case 0:
                     runMenu = false;
