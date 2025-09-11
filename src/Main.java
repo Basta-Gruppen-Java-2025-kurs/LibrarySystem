@@ -75,7 +75,7 @@ public class Main {
         System.out.print("Enter book title: ");
         String searchTerm = s.nextLine();
 
-        int index = bookTitles.indexOf(searchTerm);
+        int index = BookHandler.searchBook(bookTitles, bookAuthors, searchTerm);
         boolean isLoanSuccessful = LoanSystem.borrowBook(bookAvailable, borrowerNames, borrowedBooks, index, borrowerName);
         if (isLoanSuccessful) {
             System.out.println("Book loaned successfully");
