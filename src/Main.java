@@ -21,7 +21,7 @@ public class Main {
             try {
                 choice = s.nextInt();
             } catch (Exception e) {
-                System.out.println("Wrong input (" + e + ")");
+                System.out.println("Fel inmatning (" + e + ")");
                 choice = -1;
             }
             s.nextLine(); // Rensa newline
@@ -30,19 +30,13 @@ public class Main {
                     BookHandler.displayAllBooks(bookTitles, bookAuthors, bookISBN);
                     break;
                 case 2:
-                    System.out.print("Title: ");
-                    String title = s.nextLine();
-                    System.out.print("Author: ");
-                    String author = s.nextLine();
-                    System.out.print("ISBN: ");
-                    String isbn = s.nextLine();
-                    BookHandler.addBook(bookTitles, bookAuthors, bookISBN, title, author, isbn, bookAvailable);
+                    displayBookMenu(s);
                     break;
                 case 3:
                     displayLoanMenu(s);
                     break;
                 case 4:
-                    displayBookMenu(s);
+                    //displayReturnMenu(s);
                     break;
                 case 5:
                     EnklaRapporter.displayLibraryStatistics(bookTitles, bookAvailable, userNames);
@@ -54,14 +48,20 @@ public class Main {
                     runMenu = false;
                     break;
                 default:
-                    System.out.println("No action for this number");
+                    System.out.println("Ingen åtgärd för detta nummer");
             }
         }
-        System.out.println("Good bye.");
+        System.out.println("Hej då.");
     }
 
     public static void displayBookMenu(Scanner s) {
-        System.out.println();
+        System.out.print("Titel: ");
+        String title = s.nextLine();
+        System.out.print("Författare: ");
+        String author = s.nextLine();
+        System.out.print("ISBN: ");
+        String isbn = s.nextLine();
+        BookHandler.addBook(bookTitles, bookAuthors, bookISBN, title, author, isbn, bookAvailable);
     }
 
     public static void displayLoanMenu(Scanner s) {
@@ -69,19 +69,38 @@ public class Main {
         System.out.println("Vad heter kunden?");
         String borrowerName = s.nextLine();
 
-        //String userPhoneNummer =
+        String userPhoneNummer = findOrAddUser(s, borrowerName);
 
-        System.out.print("Search book to loan: ");
+        System.out.print("Söka en bok för att låna: ");
         String searchTerm = s.nextLine();
         int index = BookHandler.searchBook(bookTitles, bookAuthors, searchTerm);
         if (index < 0) {
-            System.out.println("");
+            System.out.println("Tyvärr finns boken inte");
+            return;
         }
         /*if (borrowBook(bookTitles, borrowerNames, borrowedBooks, index, borrowerName)) {
             System.out.println("Book loaned successfully");
         } else {
             System.out.println("Failed to load book.");
         }*/
+    }
+
+    static String findOrAddUser(Scanner s, String userName) {
+        String userPhoneNummer = UserHandler.searchUser(userNames, phoneNumbers, userName);
+        if (userPhoneNummer.equals("Error")) {
+            System.out.println("Kunden finns inte. För att lägga till kunden, fyll i telefonnumret:");
+            String userPhoneNumber = s.nextLine();
+            if (userPhoneNumber.length()>0) {
+                UserHandler.registerUser(userNames, phoneNumbers, userName, userPhoneNumber);
+            }
+        }
+        return userPhoneNummer;
+    }
+
+    public static void displayReturnMenu(Scanner s) {
+        System.out.println("Vem återlämnar boken?");
+        String userName = s.nextLine();
+
     }
 
     // + ansvarar för main-metoden och att koppla ihop alla delar
@@ -131,12 +150,12 @@ public class Main {
 
         testBooks();
 
-        BookHandler.addBook(bookTitles, bookAuthors, bookISBN, "Harry Potter", "J.K. Rowling", "1", bookAvailable);
+        //BookHandler.addBook(bookTitles, bookAuthors, bookISBN, "Harry Potter", "J.K. Rowling", "1", bookAvailable);
 
         displayMainMenu(scanner);
     }
 
-    public static void addBook(ArrayList<String> titles,
+    /*public static void addBook(ArrayList<String> titles,
                                ArrayList<String> authors, ArrayList<String> isbn, String
                                        title, String author, String isbnNumber) {
         titles.add(title);
@@ -145,5 +164,5 @@ public class Main {
         bookAvailable.add(true); // Ny bok är alltid tillgänglig
         System.out.println("Bok tillagd: " + title + " av " +
                 author);
-    }
+    }*/
 }
